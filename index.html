@@ -1,0 +1,340 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title> Alphabet </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"> </script>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+  <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="main.css">
+  <!-- SCRIPT THAT HANDLES MOVEMENT -->
+  <script>
+    $(document).ready(function(){
+    $(".products-inline").slick(
+       {
+        nextArrow: '<img class = "sliders" src = "images/slider-r.png">',
+        prevArrow: '<img class = "sliders" src = "images/slider-l.png">',
+        cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)',
+       }
+    );
+    $(".vault-knob").fadeIn(500);
+    $(".vault-knob").click(function(){
+      //return;
+       $(".vault-knob").addClass("spinVault");
+        $("#vault-door").addClass("open");
+        $("#vault-door").css("pointer-events", "none");
+        $(".header").stop(true,true).delay(1200).fadeIn(500);
+        $("body").css({"background":"#333333"});
+        //after opening, delay at 1000
+        $(".nav-top").stop(true,true).delay(1000).fadeIn("slow");
+        $(".item").stop(true,true).delay(2000).fadeIn("slow");
+        setTimeout(function(){
+                $("body").css({"overflow-y": "auto"});
+        }, 2700);
+        }); //end of on click
+        $(".openForm").click(function(){
+          $(".black-background").addClass("show");
+          $(".page-form").addClass("show");
+
+       }); //end of open form click
+      $(".exit").click(function(){
+        $(".black-background").removeClass("show");
+          $(".page-form").removeClass("show");
+      }); //end of exit click
+
+                  //form validation
+                  $("form[name='inner-form']").validate({
+                errorClass: "error-border",
+                validClass: "valid-border",
+                    rules: {
+                    name: "required",
+                    email: {
+                    required: true,
+                    email: true
+                    },
+                    message: {
+                    required: true
+                    }
+                },
+                errorPlacement: function(error,element) {
+                    return true;
+                },
+                submitHandler: function(form) {
+                    form.submit();
+                    }
+                }) //end of form validation
+
+
+  });
+ </script>
+</head>
+
+<body>
+  <div id="vault-door">
+    <div class="left-door"></div>
+    <div class="right-door"></div>
+    <div class="vault-knob">
+      <span class="a">a</span>
+      <span class="b">b</span>
+      <span class="c">c</span>
+      <span class="plus">+</span>
+    </div>
+  </div>
+
+  <!-- MAIN BODY WITH ALL THE VAULTS -->
+  <div class="container">
+    <div class="black-background"></div>
+    <div class="header">
+      <h1> Alphabet </h1>
+    </div>
+    <nav class="nav-top">
+      <span class="openForm"><a class = "contact">Contact</a></span>
+    </nav>
+    <!-- HUGE DIV WITH EVERYTHING IN IT -->
+    <div class="main-body-div">
+      <div class="item_rows">
+          <div class="item" id="a"> </div>
+          <div class="item" id="b"> </div>
+          <div class="item" id="c"> </div>
+          <div class="item" id="d"> </div>
+ 
+          <div class="item" id="e"> </div>
+          <div class="item" id="f"> </div>
+          <div class="item" id="g"> </div>
+          <div class="item" id="h"> </div>
+    
+          <div class="item" id="i"> </div>
+          <div class="item" id="j"> </div>
+          <div class="item" id="k"> </div>
+          <div class="item" id="l"> </div>
+     
+          <div class="item" id="m"> </div>
+          <div class="item" id="n"> </div>
+          <div class="item" id="o"> </div>
+          <div class="item" id="p"> </div>
+  
+          <div class="item" id="q"> </div>
+          <div class="item" id="r"> </div>
+          <div class="item" id="s"> </div>
+          <div class="item" id="t"> </div>
+
+          <div class="item" id="u"> </div>
+          <div class="item" id="v"> </div>
+          <div class="item" id="w"> </div>
+          <div class="item" id="x"> </div>
+
+          <div class="item" id="y"> </div>
+          <div class="item" id="z"> </div>
+
+      </div>
+    </div>
+
+    <div class="page-form">
+      <form class="inner-form" method="POST" action="contact.php">
+        <p class="form-descriptor">Name</p>
+        <input type = "text" name = "name" class = "textbox">
+        <p class="form-descriptor">Email Address</p>
+        <input type = "email" name = "email" class = "textbox">
+        <p class="form-descriptor">Message</p>
+        <textarea class="textbox-large" name = "message"></textarea>
+        <button type = "submit" class = "button-submit" name = "submit-button" >Send</button>
+      </form>
+      <div class="exit">x</div>
+    </div>
+
+    <!-- BEGINNING OF LIGHT BOX -->
+    <div class="product-light-box">
+      <h2 class = "product-name" id = "product-name"> <strong>Product </strong></h2>
+      <div class="products-inline">
+        <div id="product-image-id"><img src = "images/a.jpg" width = "400px" height = "200px"></div>
+          <div id="product-image-id"><img src = "images/a.jpg" width = "400px" height = "200px"></div>
+            <div id="product-image-id"><img src = "images/a.jpg" width = "400px" height = "200px"></div>
+            </div>
+            <br>
+            <p class="product-descriptor" id="product-price"><strong>Price: </strong>$15.00</p>
+            <p class="product-descriptor" id="product-size"><strong>Size: </strong> 9M</p>
+            <button type = "submit" class = "purchase-button">Buy</button>
+            <div class="exits">x</div>
+          </div>
+          <!-- END OF PRODUCT LIGHT BOX -->
+
+          <div class="footer"> 
+             <h3 class = "footer-text">Mateo Massoud 2018 </h3>
+             <div class = "icons">
+              <a class = "icon-links" href = href="https://www.instagram.com/mateohatesu/?hl=en"><i class="fab fa-instagram"></i></a>
+              <a class = "icon-links" href = href="https://twitter.com/mateo_massoud"><i class="fab fa-twitter-square"></i></a>
+                <a class = "icon-links" href = href="https://www.instagram.com/mateohatesu/?hl=en"><i class="fas fa-envelope-square"></i></a>
+             </div>
+          </div>
+        </div>
+</body>
+
+<script>
+  $(document).ready(function() {
+
+    var a = {
+      "letter": "A",
+      "price": "$12.00",
+      "size": "14M"
+    };
+    var b = {
+      "letter": "B",
+      "price": "$11.00",
+      "size": "13M"
+    };
+    var c = {
+      "letter": "C",
+      "price": "$13.00",
+      "size": "18M"
+    };
+    var d = {
+      "letter": "D",
+      "price": "$22.00",
+      "size": "19M"
+    };
+    var e = {
+      "letter": "E",
+      "price": "$12.00",
+      "size": "24M"
+    };
+    var f = {
+      "letter": "F",
+      "price": "$15.00",
+      "size": "14M"
+    };
+    var g = {
+      "letter": "G",
+      "price": "$12.00",
+      "size": "14M"
+    };
+    var h = {
+      "letter": "H",
+      "price": "$12.00",
+      "size": "14M"
+    };
+    var i = {
+      "letter": "I",
+      "price": "$12.00",
+      "size": "14M"
+    };
+    var j = {
+      "letter": "J",
+      "price": "$12.00",
+      "size": "14M"
+    };
+    var k = {
+      "letter": "K",
+      "price": "$12.00",
+      "size": "14M"
+    };
+    var l = {
+      "letter": "L",
+      "price": "$12.00",
+      "size": "14M"
+    };
+    var m = {
+      "letter": "M",
+      "price": "$12.00",
+      "size": "14M"
+    };
+    var n = {
+      "letter": "N",
+      "price": "$12.00",
+      "size": "14M"
+    };
+    var o = {
+      "letter": "O",
+      "price": "$12.00",
+      "size": "14M"
+    };
+    var p = {
+      "letter": "P",
+      "price": "$12.00",
+      "size": "14M"
+    };
+    var q = {
+      "letter": "Q",
+      "price": "$12.00",
+      "size": "14M"
+    };
+    var r = {
+      "letter": "R",
+      "price": "$12.00",
+      "size": "14M"
+    };
+    var s = {
+      "letter": "S",
+      "price": "$12.00",
+      "size": "14M"
+    };
+    var t = {
+      "letter": "T",
+      "price": "$12.00",
+      "size": "14M"
+    };
+    var u = {
+      "letter": "U",
+      "price": "$12.00",
+      "size": "14M"
+    };
+    var v = {
+      "letter": "V",
+      "price": "$12.00",
+      "size": "14M"
+    };
+    var w = {
+      "letter": "W",
+      "price": "$12.00",
+      "size": "14M"
+    };
+    var x = {
+      "letter": "X",
+      "price": "$12.00",
+      "size": "14M"
+    };
+    var y = {
+      "letter": "Y",
+      "price": "$12.00",
+      "size": "14M"
+    };
+    var z = {
+      "letter": "Z",
+      "price": "$12.00",
+      "size": "14M"
+    };
+
+
+
+    //handling everything product light boxes here
+    $(".item").click(function() {
+
+      var productId = $(this).attr('id');
+      var fetchProductLetter = eval(productId).letter;
+      var fetchProductPrice = eval(productId).price;
+      var fetchProductSize = eval(productId).size;
+      //add the values to the light box
+      //make sure to check image extensions for next line
+      //also ensure each image is named with a captial letter of alphabet
+      document.getElementById("product-image-id").innerHTML = "<img src = \"images/" + fetchProductLetter + ".jpg\" class = \"product-image\" width = \"400px\" height = \"200px\">"
+      document.getElementById("product-name").innerHTML = "Product " + fetchProductLetter;
+      document.getElementById("product-price").innerHTML = "Price: " + fetchProductPrice;
+      document.getElementById("product-size").innerHTML = "Size: " + fetchProductSize;
+
+      $(".black-background").addClass("show");
+      $(".product-light-box").addClass("show");
+      //once the item is shown
+    }); //end of if item is clicked
+
+    $(".exits").click(function() {
+      $(".black-background").removeClass("show");
+      $(".product-light-box").removeClass("show");
+    });
+
+
+  });
+</script>
+
+<html>

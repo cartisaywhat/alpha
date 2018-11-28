@@ -1,0 +1,485 @@
+body {
+  margin: 0em;
+  padding: 0em;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  display: flex;
+}
+
+.header {
+  width: 100vw;
+  z-index: 3;
+  text-align: CENTER;
+  color: #EEEEEE;
+  font-family: 'Helvetica', Tahoma, Geneva, Verdana, sans-serif;
+  display: none;
+}
+
+h1 {
+  font-size: 50px;
+  margin-bottom: 15px;
+  text-align: CENTER;
+}
+
+.nav-top {
+  z-index: 4;
+  width: 100%;
+  top: 24%;
+  padding: 0px;
+  display: none;
+  text-align: CENTER;
+}
+
+.contact {
+  text-decoration: none;
+  font-family: 'Lato', Tahoma, Geneva, Verdana, sans-serif;
+  color: #AAAAAA;
+  text-transform: uppercase;
+  transition: color 0.2s ease-in-out;
+  position: absolute;
+    top: 230%;
+    z-index: 4;
+    text-align: CENTER;
+    left: 47%;
+    font-size: 20px;
+}
+
+a:hover {
+  color: #EEEEEE;
+  cursor: pointer;
+}
+
+.main-body-div {
+  position: absolute;
+  z-index: -10;
+  width: 100%;
+  height: 200%;
+}
+
+#vault-door {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  top: 0;
+  left: 0;
+}
+
+.left-door {
+  left: 0;
+  background-image: url('images/vault-door-pattern-left.png');
+  background-size: 100%;
+  z-index: 1;
+  width: 53%;
+  height: 200vh;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.right-door {
+  background-image: url(images/vault-door-pattern-right.png);
+  background-size: 100%;
+  z-index: 1;
+  width: 53%;
+  position: absolute;
+  right: 0;
+  height: 200vh;
+  top: 50%;
+  transform: translateY(-50%) translateY(-8vw);
+}
+
+.vault-knob {
+  background-image: url('images/vault-lock.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 3;
+  width: 45vw;
+  height: 45vw;
+  max-width: 150px;
+  max-height: 150px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  transition: border 0.25s linear;
+  transform-origin: CENTER;
+  animation: spinKnob infinite 5s linear;
+}
+
+@keyframes spinKnob {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(720deg);
+  }
+}
+
+.a {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: yellow;
+  font-size: 40pt;
+  line-height: 0;
+  text-shadow: 0px 0px 7px black;
+}
+
+.b {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  transform: translateY(-100%);
+  color: red;
+  font-size: 40pt;
+  text-shadow: 0px 0px 7px black;
+}
+
+.c {
+  position: absolute;
+  top: 100%;
+  left: 100%;
+  transform: translate(-100%, -100%);
+  color: blue;
+  font-size: 40pt;
+  text-shadow: 0px 0px 7px black;
+}
+
+.plus {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(-3px);
+  color: white;
+  font-size: 40pt;
+  line-height: 0;
+  text-shadow: 0px 0px 7px black;
+}
+
+.vault-knob:hover {
+  cursor: pointer;
+}
+
+.open>.left-door {
+  transition: all 1s linear;
+  transform: translateX(-100%);
+  transition-delay: 0.9s;
+}
+
+.open>.right-door {
+  transition: all 1s linear;
+  transform: translateX(100%);
+  transition-delay: 0.9s;
+}
+
+.open>.vault-knob {
+  transition: all 2s linear;
+  transform: translate(-50%, -50%), translateX(0), rotate(0deg);
+  transition-delay: 0.9s;
+}
+
+.spinVault {
+  animation: vaultSpin 1.8s linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes vaultSpin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+
+  100% {
+    transform: translate(50vw, -50%) rotate(720deg);
+  }
+}
+
+/****** Main page rules *****/
+.item_rows {
+  margin-top: 30px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.item {
+  border: 3px solid #AAAAAA;
+  border-radius: 3px;
+  width: 300px;
+  height: 150px;
+  margin: 0px 10px;
+  /**background-image: url('images/vault_door.png'); **/
+  background-color: #181818;
+  background-position: center;
+  transition: border 0.2s ease-in-out;
+  flex: 1 0 20%;
+  margin-top: 10px;
+  display: none;
+  
+}
+
+.item:hover {
+  border: 3px solid #EEEEEE;
+  cursor: pointer;
+}
+
+/** FORM **/
+.page-form {
+  border-radius: 10px;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  transform: translateX(25%);
+  margin-top: 5%;
+  width: 70%;
+  height: 80%;
+  z-index: 5;
+  background-color: #111111;
+  visibility: hidden;
+  top: 10px;
+}
+
+.inner-form {
+  top: 50px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-descriptor {
+  color: white;
+  font-size: 20px;
+  font-family: 'Lato';
+}
+
+.textbox {
+  font-size: 25px;
+}
+
+.textbox, .textbox-large {
+  margin-top: -15px;
+  border-radius: 5px;
+}
+
+.textbox {
+  width: 600px;
+  height: 30px;
+}
+
+.textbox-large {
+  width: 600px;
+  height: 100px;
+  resize: none;
+  padding: 0px !important;
+  font-size: 25px;
+}
+
+.button-submit {
+  position: absolute;
+  bottom: -60px;
+  left: 30%;
+  background-image: linear-gradient(#303030, #282828, #222222);
+  border: 1px solid lightgrey;
+  font-size: 20px;
+  font-family: 'Lato';
+  color: lightgrey;
+  border-radius: 2px;
+  width: 40%;
+  height: 12.5%;
+  transition: color 0.2s ease-in-out;
+}
+
+.button-submit:hover {
+  color: white;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+.exit, .exits {
+  color: lightgrey;
+  font-family: Lato;
+  font-size: 30px;
+  border: 1px solid lightgrey;
+  border-radius: 120px;
+  position: absolute;
+  padding: 0px 15px 8px 15px;
+  right: 30px;
+  top: 10px;
+  transition: color 0.2s ease-in-out;
+  transition: border 0.2s ease-in-out;
+}
+
+.exit:hover {
+  color: white;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+.exits:hover {
+  color: white;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+/** PRODUCT LIGHT BOX **/
+.product-light-box {
+  background-color: grey;
+  position: fixed;
+  left: 20%;
+  top: 10%;
+  padding: 40px 120px;
+  text-align: CENTER;
+  color: white;
+  font-family: Helvetica;
+  border-radius: 10px;
+  z-index: 4;
+  background-color: #111111;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 70%;
+  max-width: 40%;
+}
+
+.black-background {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.9;
+  z-index: 4;
+  position: fixed;
+  visibility: hidden;
+}
+
+.slick-slide img {
+  display: inline-flex;
+}
+
+.slick-arrow {
+  width: 75px;
+  height: 220%;
+  margin: 0px -50px;
+  padding: 16px 15px;
+}
+
+.slick-arrow:hover {
+  background-color: #222222;
+  border-radius: 5px;
+}
+
+#product-image-id:focus {
+  outline-width: 0;
+}
+
+.product-name {
+  color: #EEEEEE;
+  letter-spacing: 0.5px;
+  font-size: 30px;
+}
+
+.product-descriptor {
+  color: #EEEEEE;
+  font-family: Lato;
+}
+
+.purchase-button {
+  background-color: black;
+  color: white;
+  padding: 10px 25px;
+  border: 1px solid black;
+  border-radius: 3px;
+  font-size: 15px;
+  font-family: inherit;
+  margin-top: 10px;
+  margin-bottom: -20px; 
+}
+
+.products-inline {
+  display: inline-flex;
+  padding: 0px;
+}
+
+.arrow {
+  font-size: 40px;
+  line-height: 160px;
+}
+
+.arrow:hover {
+  cursor: pointer;
+  text-shadow: 20px;
+}
+
+.purchase-button:hover {
+  cursor: pointer;
+}
+
+.show {
+  visibility: visible;
+}
+
+.footer {
+  position: absolute;
+  background-color: #181818;
+  color: #EEEEEE;
+  font-family: Helvetica, sans-serif;
+  width: 100%;
+  height: 50%;
+  top: 222%;
+}
+
+
+
+.fab, .fas
+{
+  transform: scale(5,5); 
+  margin-top: 15px;
+  margin-left: 135px;
+}
+
+.icons
+{
+  display: inline-flex;
+  justify-content: space-evenly;
+  position: absolute;
+  left: 29%;
+  top: 50%;
+}
+
+.icon-links {
+  text-decoration: none;
+  color: white;
+}
+
+.icon-links:hover{
+  color: #aaa;
+}
+
+.footer-text {
+  position: absolute;
+  bottom: 0px;
+  right: 40px;
+  font-weight: 300;
+  letter-spacing: 1.5px;
+}
+
+.error-border {
+  box-shadow: -0.1px -0.1px 5px red;
+}
+
+.valid-border {
+  box-shadow: -0.1px -0.1px 5px #23DC3D;
+}
